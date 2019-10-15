@@ -247,6 +247,16 @@ public class UtilNeuralNet {
         return log;
     }
 
+    public static Tensor expect(int size, int index, int val) {
+        Tensor tensor = new Tensor();
+        tensor.setDepth(1);
+        tensor.setHeight(1);
+        tensor.setWidth(size);
+        tensor.createArray();
+        tensor.set(index, val);
+        return tensor;
+    }
+
     //交并比
     public static void iou() {
 
