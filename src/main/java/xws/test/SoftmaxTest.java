@@ -13,12 +13,17 @@ public class SoftmaxTest {
     public static void main(String[] args) {
 
         SoftmaxLayer softmaxLayer = new SoftmaxLayer();
-        Tensor tensorInput = TenserUtil.createTensor(4);
+        Tensor tensorInput = TenserUtil.createTensor(5);
         tensorInput.show("input ");
         Tensor tensorOut = softmaxLayer.forward(tensorInput);
         tensorOut.show("out ");
-        FullNetWorkTest.expectMNIST(3,4);
-        UtilNeuralNet.e
+        double total = 0;
+        for (int i = 0; i < tensorOut.getWidth(); i++) {
+            total = total + tensorOut.get(i);
+
+        }
+        System.out.println(total);
+//        UtilNeuralNet.e
 
     }
 }
