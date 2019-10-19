@@ -1,5 +1,6 @@
 package xws.test;
 
+import com.alibaba.fastjson.JSON;
 import xws.neuron.Tensor;
 import xws.neuron.UtilNeuralNet;
 import xws.neuron.layer.loss.SoftmaxLayer;
@@ -18,11 +19,15 @@ public class SoftmaxTest {
         Tensor tensorOut = softmaxLayer.forward(tensorInput);
         tensorOut.show("out ");
         double total = 0;
+        double[] actions = new double[tensorOut.getWidth()];
+
         for (int i = 0; i < tensorOut.getWidth(); i++) {
             total = total + tensorOut.get(i);
-
+            actions[i] = total;
         }
-        System.out.println(total);
+
+        System.out.println("total = " + total);
+        System.out.println("actions = " + JSON.toJSONString(actions));
 //        UtilNeuralNet.e
 
     }
